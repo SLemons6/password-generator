@@ -1,4 +1,5 @@
 // Assignment code here
+// code for number and special character prompt 
 var promptCharNumIsValid = function (promptCharNum) {
   // validate prompt response
   if (promptCharNum === "" || promptCharNum === null) {
@@ -14,6 +15,7 @@ var promptCharNumIsValid = function (promptCharNum) {
   return true;
 };
 
+// code for letters prompt
 var letterPromptIsValid = function (promptLetter) {
   // validate prompt response
   if (promptLetter === "" || promptLetter === null) {
@@ -29,7 +31,7 @@ var letterPromptIsValid = function (promptLetter) {
   return true;
 };
 
-// prompt to check what case letters the user wants
+// letter prompt function
 var letterPrompt = function () {
   var promptLetter = "";
   var isValid = false;
@@ -65,6 +67,7 @@ var lengthPrompt = function () {
     passwordLength = window.prompt('How many characters do you want your password to have?  Enter a number between 8 and 128.');
     if (passwordLength === "" || passwordLength === null || passwordLength < 8 || passwordLength > 128) {
       isValid = false;
+      window.alert("Please provide a valid answer");
     }
     else {
       isValid = true;
@@ -74,31 +77,33 @@ var lengthPrompt = function () {
 };
 
 
-
+// functions to generate random number/string/character
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
+// random uppercase letter function
 function generateUpper() {
   min = "A".charCodeAt();
   max = "Z".charCodeAt();
   x = getRandomInt(min, max + 1);
   return String.fromCharCode(x);
 }
+// random lowercase letter function
 function generateLower() {
   min = "a".charCodeAt();
   max = "z".charCodeAt();
   x = getRandomInt(min, max + 1);
   return String.fromCharCode(x);
 }
-
+// random number function
 function generateNumber() {
   x = getRandomInt(0, 10);
   return x.toString();
 }
-
+// random special character function
 function generateSpecial() {
   category = getRandomInt(0, 2);
   var min, max;
@@ -112,6 +117,7 @@ function generateSpecial() {
   x = getRandomInt(min, max + 1);
   return String.fromCharCode(x);
 }
+// function to determine which types of characters are allowed based on prompts
 function generateChar(letters, numberCharacters) {
   // charTypes = ["upper", "lower", "special", "numbers"]
   charTypes = [];
@@ -155,7 +161,7 @@ function generateChar(letters, numberCharacters) {
       return generateSpecial();
   }
 }
-
+// function to generate finished password
 function generatePassword() {
   letters = letterPrompt();
   numberCharacters = charNumPrompt();
@@ -185,4 +191,5 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// beginning prompt
 window.alert("Click Generate Password to begin.")

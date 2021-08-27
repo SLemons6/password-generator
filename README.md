@@ -11,7 +11,7 @@ A web application designed to generate random passwords for users based on their
 ## Website
 https://slemons6.github.io/password-generator/
 
-https://github.com/SLemons6/password-generator/tree/main/assets/images
+<img src="./assets/images/password-generator screenshot.jpg" alt="Screenshot of Password Generator website"/>
 
 ## Contribution
 Made by Shayne Lemons

@@ -7,7 +7,7 @@ var promptCharNumIsValid = function (promptCharNum) {
   }
   // convert prompt response to lowercase
   promptCharNum = promptCharNum.toLowerCase().trim();
-  var validChoices = ["numbers", "special", "both"];
+  var validChoices = ["numbers", "special", "both", "none"];
   if (!validChoices.includes(promptCharNum)) {
     // return to prompt
     return false;
@@ -23,7 +23,7 @@ var letterPromptIsValid = function (promptLetter) {
   }
   // convert prompt response to lowercase
   promptLetter = promptLetter.toLowerCase().trim();
-  var validChoices = ["upper", "lower", "mixed"];
+  var validChoices = ["upper", "lower", "mixed", "none"];
   if (!validChoices.includes(promptLetter)) {
     // return to prompt
     return false;
@@ -36,7 +36,7 @@ var letterPrompt = function () {
   var promptLetter = "";
   var isValid = false;
   while (!isValid) {
-    promptLetter = window.prompt('Would you like your password to include UPPER case letters, LOWER case letters, or MIXED case letters?  Enter "UPPER" "LOWER" or "MIXED" to choose.');
+    promptLetter = window.prompt('Would you like your password to include UPPER case letters, LOWER case letters, MIXED case, or no letters?  Enter "UPPER", "LOWER", "MIXED", or "NONE" to choose.');
     isValid = letterPromptIsValid(promptLetter);
     if (!isValid) {
       window.alert("Please provide a valid answer!");
@@ -50,7 +50,7 @@ var charNumPrompt = function () {
   var promptCharNum = "";
   var isValid = false;
   while (!isValid) {
-    promptCharNum = window.prompt('Would you like your password to include numbers and/or special characters? Enter "NUMBERS" "SPECIAL" or "BOTH" to choose.');
+    promptCharNum = window.prompt('Would you like your password to include numbers and/or special characters? Enter "NUMBERS", "SPECIAL",  "BOTH", or "NONE" to choose.');
     isValid = promptCharNumIsValid(promptCharNum);
     if (!isValid) {
       window.alert("Please provide a valid answer!");
@@ -131,7 +131,7 @@ function generateChar(letters, numberCharacters) {
       charTypes.push("lower");
       break;
 
-    default:
+    case "mixed":
       charTypes.push("upper");
       charTypes.push("lower");
   }
@@ -144,7 +144,7 @@ function generateChar(letters, numberCharacters) {
       charTypes.push("special");
       break;
 
-    default:
+    case "both":
       charTypes.push("numbers");
       charTypes.push("special");
   }
